@@ -5,6 +5,7 @@ import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { Users, UsersDocument } from "./schemas/users.schemas";
 
+
 @Injectable()
 export class UsersService {
 
@@ -27,7 +28,13 @@ export class UsersService {
         return this.usersModel.findByIdAndUpdate(id, userDto, {new: true})
     };
 
-    async remove(id: string) : Promise<Users>{
-        return this.usersModel.findByIdAndRemove(id)
+    async remove(id: string) {
+        return this.usersModel.deleteOne({id})
+    };
+
+    async getUserByEmail(email: string) : Promise<Users> {
+        const user = await this.usersModel.findOne({email: email})
+        return user
     }
+
 }

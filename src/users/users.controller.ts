@@ -20,11 +20,11 @@ export class UsersController {
         return this.userService.getById(id)
     };
 
-    @Post()
-    @HttpCode(HttpStatus.CREATED)
-    create(@Body() createUser : CreateUserDto): Promise<Users>{
-        return this.userService.create(createUser)
-    };
+    // @Post()
+    // @HttpCode(HttpStatus.CREATED)
+    // create(@Body() createUser : CreateUserDto): Promise<Users>{
+    //     return this.userService.create(createUser)
+    // };
 
     @Put(':id')
     @HttpCode(HttpStatus.OK)
@@ -34,7 +34,7 @@ export class UsersController {
 
     @Delete(':id')
     @HttpCode(HttpStatus.OK)
-    remove(@Param() id): Promise<Users>{
+    remove(@Param() id) {
         return this.userService.remove(id)
     };
 }
